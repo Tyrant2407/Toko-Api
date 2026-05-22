@@ -1,0 +1,741 @@
+2026-05-21 23:35:40.933 +07:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-21 23:35:41.078 +07:00 [INF] Now listening on: http://localhost:5174
+2026-05-21 23:35:41.081 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-21 23:35:41.082 +07:00 [INF] Hosting environment: Development
+2026-05-21 23:35:41.083 +07:00 [INF] Content root path: C:\Users\user\OneDrive\Documents\testttt\BelajarNet\dotNet\TokoApi
+2026-05-21 23:35:41.865 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:35:41.912 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:41.921 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 60.2231ms
+2026-05-21 23:35:41.929 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:35:41.936 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:42.028 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:35:42.053 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:35:42.691 +07:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-05-21 23:35:43.609 +07:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:35:43.709 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:35:43.734 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 1676.7264ms
+2026-05-21 23:35:43.735 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:35:43.739 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 1799.6909 ms
+2026-05-21 23:35:43.749 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 1820.1674ms
+2026-05-21 23:35:43.917 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - null null
+2026-05-21 23:35:43.919 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:35:43.919 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - null null
+2026-05-21 23:35:43.921 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:43.923 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:43.928 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:43.933 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - 204 null null 15.3117ms
+2026-05-21 23:35:43.934 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 14.8375ms
+2026-05-21 23:35:43.935 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - 204 null null 15.2978ms
+2026-05-21 23:35:43.941 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:35:43.945 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - null null
+2026-05-21 23:35:43.949 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/analytics - null null
+2026-05-21 23:35:43.956 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:43.960 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:43.962 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:43.967 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:35:43.967 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:35:43.969 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:35:43.976 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:35:43.976 +07:00 [INF] Route matched with {action = "GetAnalytics", controller = "Analytics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAnalytics() on controller TokoApi.Controllers.AnalyticsController (TokoApi).
+2026-05-21 23:35:43.989 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:35:44.045 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:35:44.076 +07:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:35:44.117 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:35:44.155 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 176.8955ms
+2026-05-21 23:35:44.157 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:35:44.159 +07:00 [INF] HTTP GET /api/kategori responded 200 in 195.2462 ms
+2026-05-21 23:35:44.161 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarKategori` AS `d`
+2026-05-21 23:35:44.161 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 220.4723ms
+2026-05-21 23:35:44.173 +07:00 [INF] Executing OkObjectResult, writing value of type 'TokoApi.DTOs.AnalyticsResponse'.
+2026-05-21 23:35:44.177 +07:00 [INF] Executed action TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi) in 197.2506ms
+2026-05-21 23:35:44.179 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:35:44.181 +07:00 [INF] HTTP GET /api/analytics responded 200 in 214.9791 ms
+2026-05-21 23:35:44.184 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/analytics - 200 null application/json; charset=utf-8 234.7514ms
+2026-05-21 23:35:44.251 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:35:44.263 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:35:44.265 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:35:44.276 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 172.5937ms
+2026-05-21 23:35:44.277 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:35:44.278 +07:00 [INF] HTTP GET /api/produk responded 200 in 313.0931 ms
+2026-05-21 23:35:44.280 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 334.9137ms
+2026-05-21 23:35:54.463 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori/2 - null null
+2026-05-21 23:35:54.464 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:54.465 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori/2 - 204 null null 2.9523ms
+2026-05-21 23:35:54.469 +07:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5174/api/kategori/2 - null null
+2026-05-21 23:35:54.471 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:54.474 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.Delete (TokoApi)'
+2026-05-21 23:35:54.481 +07:00 [INF] Route matched with {action = "Delete", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:35:54.516 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM (
+    SELECT `d`.`Id`, `d`.`NamaKategori`
+    FROM `DaftarKategori` AS `d`
+    WHERE `d`.`Id` = @__id_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `DaftarProduk` AS `d0` ON `t`.`Id` = `d0`.`KategoriId`
+ORDER BY `t`.`Id`
+2026-05-21 23:35:54.587 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `DaftarKategori`
+WHERE `Id` = @p0;
+SELECT ROW_COUNT();
+2026-05-21 23:35:54.595 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-21 23:35:54.600 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.Delete (TokoApi) in 116.9583ms
+2026-05-21 23:35:54.602 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.Delete (TokoApi)'
+2026-05-21 23:35:54.603 +07:00 [INF] HTTP DELETE /api/kategori/2 responded 200 in 131.4520 ms
+2026-05-21 23:35:54.605 +07:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5174/api/kategori/2 - 200 null application/json; charset=utf-8 136.4055ms
+2026-05-21 23:35:54.609 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:35:54.609 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - null null
+2026-05-21 23:35:54.611 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:54.612 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:54.613 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 4.1718ms
+2026-05-21 23:35:54.614 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - 204 null null 4.7402ms
+2026-05-21 23:35:54.618 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/analytics - null null
+2026-05-21 23:35:54.621 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:35:54.623 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:54.624 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:54.625 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:35:54.625 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:35:54.625 +07:00 [INF] Route matched with {action = "GetAnalytics", controller = "Analytics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAnalytics() on controller TokoApi.Controllers.AnalyticsController (TokoApi).
+2026-05-21 23:35:54.626 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:35:54.630 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:35:54.636 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarKategori` AS `d`
+2026-05-21 23:35:54.639 +07:00 [INF] Executing OkObjectResult, writing value of type 'TokoApi.DTOs.AnalyticsResponse'.
+2026-05-21 23:35:54.640 +07:00 [INF] Executed action TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi) in 13.4074ms
+2026-05-21 23:35:54.642 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:35:54.642 +07:00 [INF] HTTP GET /api/analytics responded 200 in 18.2421 ms
+2026-05-21 23:35:54.644 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/analytics - 200 null application/json; charset=utf-8 25.3841ms
+2026-05-21 23:35:54.657 +07:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:35:54.659 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:35:54.660 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 32.1556ms
+2026-05-21 23:35:54.661 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:35:54.662 +07:00 [INF] HTTP GET /api/kategori responded 200 in 37.2482 ms
+2026-05-21 23:35:54.664 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 42.4962ms
+2026-05-21 23:35:57.584 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori/3 - null null
+2026-05-21 23:35:57.586 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:57.587 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori/3 - 204 null null 2.6637ms
+2026-05-21 23:35:57.589 +07:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5174/api/kategori/3 - null null
+2026-05-21 23:35:57.591 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:57.592 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.Delete (TokoApi)'
+2026-05-21 23:35:57.593 +07:00 [INF] Route matched with {action = "Delete", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:35:57.609 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM (
+    SELECT `d`.`Id`, `d`.`NamaKategori`
+    FROM `DaftarKategori` AS `d`
+    WHERE `d`.`Id` = @__id_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `DaftarProduk` AS `d0` ON `t`.`Id` = `d0`.`KategoriId`
+ORDER BY `t`.`Id`
+2026-05-21 23:35:57.617 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `DaftarKategori`
+WHERE `Id` = @p0;
+SELECT ROW_COUNT();
+2026-05-21 23:35:57.619 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-21 23:35:57.620 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.Delete (TokoApi) in 26.0937ms
+2026-05-21 23:35:57.622 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.Delete (TokoApi)'
+2026-05-21 23:35:57.622 +07:00 [INF] HTTP DELETE /api/kategori/3 responded 200 in 30.8699 ms
+2026-05-21 23:35:57.623 +07:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5174/api/kategori/3 - 200 null application/json; charset=utf-8 34.4778ms
+2026-05-21 23:35:57.626 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/analytics - null null
+2026-05-21 23:35:57.626 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:35:57.627 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:57.629 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:35:57.629 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:35:57.630 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:35:57.631 +07:00 [INF] Route matched with {action = "GetAnalytics", controller = "Analytics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAnalytics() on controller TokoApi.Controllers.AnalyticsController (TokoApi).
+2026-05-21 23:35:57.632 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:35:57.635 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:35:57.638 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarKategori` AS `d`
+2026-05-21 23:35:57.640 +07:00 [INF] Executing OkObjectResult, writing value of type 'TokoApi.DTOs.AnalyticsResponse'.
+2026-05-21 23:35:57.640 +07:00 [INF] Executed action TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi) in 7.5015ms
+2026-05-21 23:35:57.641 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:35:57.642 +07:00 [INF] HTTP GET /api/analytics responded 200 in 12.9403 ms
+2026-05-21 23:35:57.643 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/analytics - 200 null application/json; charset=utf-8 17.3857ms
+2026-05-21 23:35:57.651 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:35:57.653 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:35:57.654 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 19.8494ms
+2026-05-21 23:35:57.655 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:35:57.656 +07:00 [INF] HTTP GET /api/kategori responded 200 in 25.9055 ms
+2026-05-21 23:35:57.656 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 30.9067ms
+2026-05-21 23:36:00.335 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori/4 - null null
+2026-05-21 23:36:00.337 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:00.338 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori/4 - 204 null null 2.823ms
+2026-05-21 23:36:00.339 +07:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5174/api/kategori/4 - null null
+2026-05-21 23:36:00.341 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:00.342 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.Delete (TokoApi)'
+2026-05-21 23:36:00.343 +07:00 [INF] Route matched with {action = "Delete", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:36:00.361 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM (
+    SELECT `d`.`Id`, `d`.`NamaKategori`
+    FROM `DaftarKategori` AS `d`
+    WHERE `d`.`Id` = @__id_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN `DaftarProduk` AS `d0` ON `t`.`Id` = `d0`.`KategoriId`
+ORDER BY `t`.`Id`
+2026-05-21 23:36:00.367 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+DELETE FROM `DaftarKategori`
+WHERE `Id` = @p0;
+SELECT ROW_COUNT();
+2026-05-21 23:36:00.369 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-21 23:36:00.370 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.Delete (TokoApi) in 26.1126ms
+2026-05-21 23:36:00.371 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.Delete (TokoApi)'
+2026-05-21 23:36:00.372 +07:00 [INF] HTTP DELETE /api/kategori/4 responded 200 in 30.5334 ms
+2026-05-21 23:36:00.373 +07:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5174/api/kategori/4 - 200 null application/json; charset=utf-8 33.8005ms
+2026-05-21 23:36:00.376 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - null null
+2026-05-21 23:36:00.377 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:36:00.379 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:00.381 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:00.381 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - 204 null null 5.1739ms
+2026-05-21 23:36:00.382 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 4.4752ms
+2026-05-21 23:36:00.384 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:36:00.385 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/analytics - null null
+2026-05-21 23:36:00.386 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:00.387 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:00.388 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:36:00.388 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:36:00.389 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:36:00.389 +07:00 [INF] Route matched with {action = "GetAnalytics", controller = "Analytics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAnalytics() on controller TokoApi.Controllers.AnalyticsController (TokoApi).
+2026-05-21 23:36:00.396 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:36:00.399 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarKategori` AS `d`
+2026-05-21 23:36:00.401 +07:00 [INF] Executing OkObjectResult, writing value of type 'TokoApi.DTOs.AnalyticsResponse'.
+2026-05-21 23:36:00.402 +07:00 [INF] Executed action TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi) in 8.5687ms
+2026-05-21 23:36:00.403 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:36:00.404 +07:00 [INF] HTTP GET /api/analytics responded 200 in 15.5905 ms
+2026-05-21 23:36:00.405 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/analytics - 200 null application/json; charset=utf-8 19.7611ms
+2026-05-21 23:36:00.406 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:36:00.412 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:36:00.413 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 22.965ms
+2026-05-21 23:36:00.414 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:36:00.415 +07:00 [INF] HTTP GET /api/kategori responded 200 in 27.6076 ms
+2026-05-21 23:36:00.417 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 32.9124ms
+2026-05-21 23:36:02.719 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:36:02.719 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:36:02.719 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:36:02.720 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:02.722 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:02.723 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:02.724 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 204 null null 4.8476ms
+2026-05-21 23:36:02.724 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 5.1332ms
+2026-05-21 23:36:02.725 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:36:02.727 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:36:02.729 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:36:02.730 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:36:02.732 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:02.736 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:02.739 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:36:02.740 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:36:02.742 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:36:02.743 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:36:02.759 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:36:02.762 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:36:02.764 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 26.7934ms
+2026-05-21 23:36:02.766 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:36:02.767 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:36:02.770 +07:00 [INF] HTTP GET /api/kategori responded 200 in 45.4323 ms
+2026-05-21 23:36:02.770 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:36:02.771 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:36:02.771 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 52.2599ms
+2026-05-21 23:36:02.775 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:36:02.776 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:36:02.779 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 32.7012ms
+2026-05-21 23:36:02.780 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 30.4209ms
+2026-05-21 23:36:02.780 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:36:02.781 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:36:02.782 +07:00 [INF] HTTP GET /api/produk responded 200 in 43.3995 ms
+2026-05-21 23:36:02.783 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 42.6055 ms
+2026-05-21 23:36:02.784 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 57.0335ms
+2026-05-21 23:36:02.785 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 55.7178ms
+2026-05-21 23:36:18.232 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/1/lunas - null null
+2026-05-21 23:36:18.234 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:18.235 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/1/lunas - 204 null null 2.5345ms
+2026-05-21 23:36:18.237 +07:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5174/api/transaksi/1/lunas - null 0
+2026-05-21 23:36:18.239 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:18.240 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.PelunasanKasbon (TokoApi)'
+2026-05-21 23:36:18.246 +07:00 [INF] Route matched with {action = "PelunasanKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PelunasanKasbon(Int32) on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:36:18.272 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Pembeli`, `t`.`StatusPembayaran`, `t`.`TanggalTransaksi`, `t`.`TotalHarga`, `t0`.`Id`, `t0`.`HargaSatuan`, `t0`.`JumlahBeli`, `t0`.`ProdukId`, `t0`.`SubTotal`, `t0`.`TransaksiId`, `t0`.`Id0`, `t0`.`ExpiryDate`, `t0`.`Harga`, `t0`.`IsHalal`, `t0`.`KategoriId`, `t0`.`Nama`, `t0`.`Stok`
+FROM (
+    SELECT `d`.`Id`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`
+    FROM `DaftarTransaksi` AS `d`
+    WHERE `d`.`Id` = @__id_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TransaksiId`
+ORDER BY `t`.`Id`, `t0`.`Id`
+2026-05-21 23:36:18.302 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `DaftarTransaksi` SET `Pembeli` = @p0, `StatusPembayaran` = @p1, `TanggalTransaksi` = @p2, `TotalHarga` = @p3
+WHERE `Id` = @p4;
+SELECT ROW_COUNT();
+2026-05-21 23:36:18.391 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 255), @p1='?' (DbType = Decimal), @p2='?' (DbType = DateTime), @p3='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `DaftarKeuangan` (`Keterangan`, `Nominal`, `Tanggal`, `Tipe`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `DaftarKeuangan`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2026-05-21 23:36:18.419 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-21 23:36:18.421 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.PelunasanKasbon (TokoApi) in 173.5719ms
+2026-05-21 23:36:18.422 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.PelunasanKasbon (TokoApi)'
+2026-05-21 23:36:18.422 +07:00 [INF] HTTP PUT /api/transaksi/1/lunas responded 200 in 182.3541 ms
+2026-05-21 23:36:18.423 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5174/api/transaksi/1/lunas - 200 null application/json; charset=utf-8 186.4601ms
+2026-05-21 23:36:18.426 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:36:18.427 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:36:18.428 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:18.430 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:18.431 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 4.832ms
+2026-05-21 23:36:18.431 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 4.3174ms
+2026-05-21 23:36:18.435 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:36:18.437 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:18.439 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:36:18.440 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:36:18.452 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:36:18.454 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:36:18.455 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 14.0675ms
+2026-05-21 23:36:18.456 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:36:18.456 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:36:18.458 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:36:18.459 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 20.5874 ms
+2026-05-21 23:36:18.460 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:36:18.461 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 25.7287ms
+2026-05-21 23:36:18.462 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:36:18.469 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:36:18.471 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:36:18.472 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 7.0733ms
+2026-05-21 23:36:18.473 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:36:18.474 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 14.6636 ms
+2026-05-21 23:36:18.475 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 18.6827ms
+2026-05-21 23:40:58.705 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:40:58.705 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:40:58.707 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:40:58.708 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:40:58.709 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 204 null null 3.8933ms
+2026-05-21 23:40:58.709 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 4.1876ms
+2026-05-21 23:40:58.711 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:40:58.713 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:40:58.715 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:40:58.717 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:40:58.718 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:40:58.718 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:40:58.719 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:40:58.720 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:40:58.742 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:40:58.743 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:40:58.748 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:40:58.750 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 28.9386ms
+2026-05-21 23:40:58.752 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:40:58.752 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:40:58.753 +07:00 [INF] HTTP GET /api/kategori responded 200 in 35.3598 ms
+2026-05-21 23:40:58.755 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:40:58.756 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 44.7056ms
+2026-05-21 23:40:58.757 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 33.8929ms
+2026-05-21 23:40:58.765 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:40:58.766 +07:00 [INF] HTTP GET /api/produk responded 200 in 47.5835 ms
+2026-05-21 23:40:58.767 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 53.913ms
+2026-05-21 23:48:55.181 +07:00 [INF] Application is shutting down...
+2026-05-21 23:53:30.491 +07:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-21 23:53:30.553 +07:00 [INF] Now listening on: http://localhost:5174
+2026-05-21 23:53:30.555 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-21 23:53:30.556 +07:00 [INF] Hosting environment: Development
+2026-05-21 23:53:30.556 +07:00 [INF] Content root path: C:\Users\user\OneDrive\Documents\testttt\BelajarNet\dotNet\TokoApi
+2026-05-21 23:54:52.306 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:54:52.306 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:54:52.309 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:54:52.353 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:52.353 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:52.353 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:52.361 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 204 null null 57.5087ms
+2026-05-21 23:54:52.361 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 57.9125ms
+2026-05-21 23:54:52.361 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 58.2271ms
+2026-05-21 23:54:52.365 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:54:52.365 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:54:52.365 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:54:52.371 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:52.371 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:52.371 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:52.514 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:54:52.514 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:54:52.515 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:54:52.538 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:54:52.539 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:54:52.542 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:54:52.753 +07:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-05-21 23:54:53.462 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:54:53.462 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`JumlahDibayar`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:54:53.471 +07:00 [INF] Executed DbCommand (27ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:54:53.499 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:54:53.517 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:54:53.526 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 985.0576ms
+2026-05-21 23:54:53.526 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 987.0502ms
+2026-05-21 23:54:53.527 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:54:53.527 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:54:53.529 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 1155.3634 ms
+2026-05-21 23:54:53.529 +07:00 [INF] HTTP GET /api/kategori responded 200 in 1155.3611 ms
+2026-05-21 23:54:53.535 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 1169.9669ms
+2026-05-21 23:54:53.535 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 1169.9632ms
+2026-05-21 23:54:53.545 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:54:53.547 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:54:53.557 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 1014.7825ms
+2026-05-21 23:54:53.557 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:54:53.558 +07:00 [INF] HTTP GET /api/produk responded 200 in 1185.5189 ms
+2026-05-21 23:54:53.558 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 1192.5697ms
+2026-05-21 23:54:56.244 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - null null
+2026-05-21 23:54:56.244 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:56.245 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - 204 null null 0.9314ms
+2026-05-21 23:54:56.247 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/analytics - null null
+2026-05-21 23:54:56.247 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:54:56.254 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:54:56.259 +07:00 [INF] Route matched with {action = "GetAnalytics", controller = "Analytics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAnalytics() on controller TokoApi.Controllers.AnalyticsController (TokoApi).
+2026-05-21 23:54:56.332 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:54:56.339 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarKategori` AS `d`
+2026-05-21 23:54:56.347 +07:00 [INF] Executing OkObjectResult, writing value of type 'TokoApi.DTOs.AnalyticsResponse'.
+2026-05-21 23:54:56.351 +07:00 [INF] Executed action TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi) in 91.1265ms
+2026-05-21 23:54:56.351 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:54:56.351 +07:00 [INF] HTTP GET /api/analytics responded 200 in 103.7403 ms
+2026-05-21 23:54:56.352 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/analytics - 200 null application/json; charset=utf-8 104.9585ms
+2026-05-21 23:55:34.152 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/auth/login - null null
+2026-05-21 23:55:34.152 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.152 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/auth/login - 204 null null 0.6038ms
+2026-05-21 23:55:34.154 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5174/api/auth/login - application/json 42
+2026-05-21 23:55:34.155 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.155 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AuthController.Login (TokoApi)'
+2026-05-21 23:55:34.160 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(TokoApi.DTOs.LoginRequest) on controller TokoApi.Controllers.AuthController (TokoApi).
+2026-05-21 23:55:34.261 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-21 23:55:34.266 +07:00 [INF] Executed action TokoApi.Controllers.AuthController.Login (TokoApi) in 105.6575ms
+2026-05-21 23:55:34.266 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AuthController.Login (TokoApi)'
+2026-05-21 23:55:34.266 +07:00 [INF] HTTP POST /api/auth/login responded 200 in 111.1425 ms
+2026-05-21 23:55:34.266 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5174/api/auth/login - 200 null application/json; charset=utf-8 112.1639ms
+2026-05-21 23:55:34.506 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - null null
+2026-05-21 23:55:34.506 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.506 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:55:34.506 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - 204 null null 0.4585ms
+2026-05-21 23:55:34.506 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - null null
+2026-05-21 23:55:34.506 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.506 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.506 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 0.5311ms
+2026-05-21 23:55:34.507 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/analytics - 204 null null 0.2202ms
+2026-05-21 23:55:34.508 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/analytics - null null
+2026-05-21 23:55:34.508 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - null null
+2026-05-21 23:55:34.509 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.509 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.509 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:55:34.509 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:55:34.510 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:34.510 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:55:34.510 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:55:34.510 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:55:34.512 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:55:34.512 +07:00 [INF] Route matched with {action = "GetAnalytics", controller = "Analytics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAnalytics() on controller TokoApi.Controllers.AnalyticsController (TokoApi).
+2026-05-21 23:55:34.515 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:55:34.519 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarKategori` AS `d`
+2026-05-21 23:55:34.520 +07:00 [INF] Executing OkObjectResult, writing value of type 'TokoApi.DTOs.AnalyticsResponse'.
+2026-05-21 23:55:34.521 +07:00 [INF] Executed action TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi) in 8.5001ms
+2026-05-21 23:55:34.521 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.AnalyticsController.GetAnalytics (TokoApi)'
+2026-05-21 23:55:34.521 +07:00 [INF] HTTP GET /api/analytics responded 200 in 12.6023 ms
+2026-05-21 23:55:34.522 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/analytics - 200 null application/json; charset=utf-8 13.4582ms
+2026-05-21 23:55:34.536 +07:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:55:34.538 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:55:34.538 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 28.4381ms
+2026-05-21 23:55:34.539 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:55:34.539 +07:00 [INF] HTTP GET /api/kategori responded 200 in 29.1315 ms
+2026-05-21 23:55:34.539 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 29.8594ms
+2026-05-21 23:55:34.543 +07:00 [INF] Executed DbCommand (25ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:55:34.546 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:55:34.547 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:55:34.547 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 37.8382ms
+2026-05-21 23:55:34.548 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:55:34.548 +07:00 [INF] HTTP GET /api/produk responded 200 in 38.6773 ms
+2026-05-21 23:55:34.548 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 39.7212ms
+2026-05-21 23:55:43.181 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:55:43.181 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:55:43.181 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:55:43.181 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:43.181 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:43.181 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:43.182 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 0.6006ms
+2026-05-21 23:55:43.182 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 204 null null 0.6005ms
+2026-05-21 23:55:43.182 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 0.6006ms
+2026-05-21 23:55:43.184 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:55:43.184 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:55:43.184 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:55:43.184 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:43.184 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:43.184 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:55:43.184 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:55:43.184 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:55:43.184 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:55:43.184 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:55:43.184 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:55:43.184 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:55:43.207 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:55:43.207 +07:00 [INF] Executed DbCommand (17ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:55:43.208 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:55:43.208 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 23.7008ms
+2026-05-21 23:55:43.208 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:55:43.208 +07:00 [INF] HTTP GET /api/kategori responded 200 in 24.2912 ms
+2026-05-21 23:55:43.208 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 24.793ms
+2026-05-21 23:55:43.209 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:55:43.209 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:55:43.210 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 25.3139ms
+2026-05-21 23:55:43.210 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:55:43.210 +07:00 [INF] HTTP GET /api/produk responded 200 in 25.9923 ms
+2026-05-21 23:55:43.210 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 26.4533ms
+2026-05-21 23:55:43.211 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`JumlahDibayar`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:55:43.212 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:55:43.212 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 27.9255ms
+2026-05-21 23:55:43.212 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:55:43.212 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 28.5308 ms
+2026-05-21 23:55:43.212 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 28.9783ms
+2026-05-21 23:56:00.339 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:56:00.339 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - null null
+2026-05-21 23:56:00.339 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:56:00.339 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:56:00.339 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:56:00.339 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:56:00.340 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/kategori - 204 null null 0.3643ms
+2026-05-21 23:56:00.340 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/transaksi/kasbon - 204 null null 0.3198ms
+2026-05-21 23:56:00.340 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 204 null null 0.5868ms
+2026-05-21 23:56:00.341 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/kategori - null null
+2026-05-21 23:56:00.341 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - null null
+2026-05-21 23:56:00.341 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - null null
+2026-05-21 23:56:00.341 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:56:00.341 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:56:00.341 +07:00 [INF] CORS policy execution successful.
+2026-05-21 23:56:00.342 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:56:00.342 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:56:00.342 +07:00 [INF] Executing endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:56:00.342 +07:00 [INF] Route matched with {action = "GetAll", controller = "Kategori"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TokoApi.Controllers.KategoriController (TokoApi).
+2026-05-21 23:56:00.342 +07:00 [INF] Route matched with {action = "GetKasbon", controller = "Transaksi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetKasbon() on controller TokoApi.Controllers.TransaksiController (TokoApi).
+2026-05-21 23:56:00.342 +07:00 [INF] Route matched with {action = "GetAll", controller = "Produk"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(TokoApi.Helpers.ProdukQuery) on controller TokoApi.Controllers.ProdukController (TokoApi).
+2026-05-21 23:56:00.360 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`NamaKategori`, `d0`.`Id`, `d0`.`ExpiryDate`, `d0`.`Harga`, `d0`.`IsHalal`, `d0`.`KategoriId`, `d0`.`Nama`, `d0`.`Stok`
+FROM `DaftarKategori` AS `d`
+LEFT JOIN `DaftarProduk` AS `d0` ON `d`.`Id` = `d0`.`KategoriId`
+ORDER BY `d`.`Id`
+2026-05-21 23:56:00.361 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.KategoriResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:56:00.361 +07:00 [INF] Executed action TokoApi.Controllers.KategoriController.GetAll (TokoApi) in 19.2762ms
+2026-05-21 23:56:00.361 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.KategoriController.GetAll (TokoApi)'
+2026-05-21 23:56:00.361 +07:00 [INF] HTTP GET /api/kategori responded 200 in 19.8879 ms
+2026-05-21 23:56:00.362 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/kategori - 200 null application/json; charset=utf-8 20.2742ms
+2026-05-21 23:56:00.372 +07:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`JumlahDibayar`, `d`.`Pembeli`, `d`.`StatusPembayaran`, `d`.`TanggalTransaksi`, `d`.`TotalHarga`, `t`.`Id`, `t`.`HargaSatuan`, `t`.`JumlahBeli`, `t`.`ProdukId`, `t`.`SubTotal`, `t`.`TransaksiId`, `t`.`Id0`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`
+FROM `DaftarTransaksi` AS `d`
+LEFT JOIN (
+    SELECT `d0`.`Id`, `d0`.`HargaSatuan`, `d0`.`JumlahBeli`, `d0`.`ProdukId`, `d0`.`SubTotal`, `d0`.`TransaksiId`, `d1`.`Id` AS `Id0`, `d1`.`ExpiryDate`, `d1`.`Harga`, `d1`.`IsHalal`, `d1`.`KategoriId`, `d1`.`Nama`, `d1`.`Stok`
+    FROM `DaftarDetailTransaksi` AS `d0`
+    INNER JOIN `DaftarProduk` AS `d1` ON `d0`.`ProdukId` = `d1`.`Id`
+) AS `t` ON `d`.`Id` = `t`.`TransaksiId`
+WHERE `d`.`StatusPembayaran` = 'Kasbon'
+ORDER BY `d`.`TanggalTransaksi` DESC, `d`.`Id`, `t`.`Id`
+2026-05-21 23:56:00.372 +07:00 [INF] Executed DbCommand (29ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`ExpiryDate`, `t`.`Harga`, `t`.`IsHalal`, `t`.`KategoriId`, `t`.`Nama`, `t`.`Stok`, `d0`.`Id`, `d0`.`NamaKategori`
+FROM (
+    SELECT `d`.`Id`, `d`.`ExpiryDate`, `d`.`Harga`, `d`.`IsHalal`, `d`.`KategoriId`, `d`.`Nama`, `d`.`Stok`
+    FROM `DaftarProduk` AS `d`
+    ORDER BY `d`.`Nama`
+    LIMIT @__p_1 OFFSET @__p_0
+) AS `t`
+INNER JOIN `DaftarKategori` AS `d0` ON `t`.`KategoriId` = `d0`.`Id`
+ORDER BY `t`.`Nama`
+2026-05-21 23:56:00.373 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.TransaksiResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:56:00.373 +07:00 [INF] Executed action TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi) in 30.7947ms
+2026-05-21 23:56:00.373 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.TransaksiController.GetKasbon (TokoApi)'
+2026-05-21 23:56:00.373 +07:00 [INF] HTTP GET /api/transaksi/kasbon responded 200 in 31.3877 ms
+2026-05-21 23:56:00.373 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/transaksi/kasbon - 200 null application/json; charset=utf-8 31.7239ms
+2026-05-21 23:56:00.374 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `DaftarProduk` AS `d`
+2026-05-21 23:56:00.374 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TokoApi.DTOs.ProdukResponse, TokoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-21 23:56:00.375 +07:00 [INF] Executed action TokoApi.Controllers.ProdukController.GetAll (TokoApi) in 32.5193ms
+2026-05-21 23:56:00.375 +07:00 [INF] Executed endpoint 'TokoApi.Controllers.ProdukController.GetAll (TokoApi)'
+2026-05-21 23:56:00.375 +07:00 [INF] HTTP GET /api/produk responded 200 in 33.0983 ms
+2026-05-21 23:56:00.375 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5174/api/produk?pageNumber=1&pageSize=100 - 200 null application/json; charset=utf-8 33.422ms

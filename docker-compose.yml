@@ -1,0 +1,76 @@
+services:
+
+  # ── 1. MySQL Database ─────────────────────────────────────────────────────────
+  toko_db:
+    image: mysql:8.0
+    container_name: belajarnet_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: toko_db
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      timeout: 5s
+      retries: 10
+      interval: 5s
+      start_period: 30s
+    networks:
+      - belajarnet_net
+
+  # ── 2. .NET 8 Web API ─────────────────────────────────────────────────────────
+  toko_api:
+    build:
+      context: ./dotNet/TokoApi
+      dockerfile: Dockerfile
+    container_name: belajarnet_api
+    restart: unless-stopped
+    ports:
+      - "5174:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Server=toko_db;Database=toko_db;User=root;Password=rootpassword;CharSet=utf8mb4;"
+      Jwt__Key: "BelajarNetSuperSecretKey_ChangeMeInProduction_2026!"
+      Jwt__Issuer: "TokoApi"
+      Jwt__Audience: "TokoFrontend"
+      Cors__AllowedOrigins: "http://localhost:3000,http://toko_frontend:3000"
+      LowStockThreshold: "5"
+    depends_on:
+      toko_db:
+        condition: service_healthy
+    networks:
+      - belajarnet_net
+
+  # ── 3. Next.js Frontend ───────────────────────────────────────────────────────
+  toko_frontend:
+    build:
+      context: ./toko-frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:5174/api
+    container_name: belajarnet_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: http://localhost:5174/api
+    depends_on:
+      - toko_api
+    networks:
+      - belajarnet_net
+
+# ── Volumes & Networks ────────────────────────────────────────────────────────
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  belajarnet_net:
+    driver: bridge

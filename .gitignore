@@ -1,0 +1,21 @@
+# ─── Root .gitignore ────────────────────────────────────────────────────────
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Secrets
+.env
+.env.*
+!**/.env.example
+secrets.json
+
+# Docker overrides
+docker-compose.override.yml

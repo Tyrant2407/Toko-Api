@@ -1,0 +1,12 @@
+# Mengabaikan folder hasil build lokal
+bin/
+obj/
+
+# Mengabaikan file environment lokal
+.env
+appsettings.Development.json
+
+# Mengabaikan folder git dan vs
+.git/
+.vscode/
+.vs/

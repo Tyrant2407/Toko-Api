@@ -1,0 +1,37 @@
+# ─── .NET Build Outputs ─────────────────────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+out/
+publish/
+
+# ─── User & IDE Files ────────────────────────────────────────────────────────
+*.user
+*.suo
+.vs/
+.vscode/
+*.DotSettings.user
+
+# ─── Secrets & Env ───────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+appsettings.Production.json
+secrets.json
+
+# ─── SQLite (local dev fallback) ─────────────────────────────────────────────
+*.db
+*.db-shm
+*.db-wal
+
+# ─── OS files ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── NuGet ───────────────────────────────────────────────────────────────────
+*.nupkg
+packages/
+.nuget/
+
+# ─── Test output ─────────────────────────────────────────────────────────────
+TestResults/
+coverage/

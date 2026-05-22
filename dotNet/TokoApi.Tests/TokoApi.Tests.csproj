@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <!--
+      Needed so WebApplicationFactory<Program> can access the top-level Program class
+      from the main API project even when it's in a separate assembly.
+    -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core test runner -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+
+    <!-- Integration test infrastructure -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
+    <PackageReference Include="Testcontainers.MySql" Version="3.9.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+
+    <!-- Legacy unit tests (kept so existing tests still compile) -->
+    <PackageReference Include="Moq" Version="4.20.72" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TokoApi\TokoApi.csproj" />
+  </ItemGroup>
+
+</Project>
