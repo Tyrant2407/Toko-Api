@@ -1,0 +1,35 @@
+name: Backend Integration Tests
+
+# Kapan tes ini harus berjalan?
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Docker sudah tersedia di ubuntu-latest (dibutuhkan Testcontainers)
+
+    steps:
+    # 1. Unduh kode ke server GitHub
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. Siapkan .NET 8
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    # 3. Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore dotNet/TokoApi.Tests/TokoApi.Tests.csproj
+
+    # 4. Verifikasi Docker tersedia (dibutuhkan oleh Testcontainers untuk MySQL)
+    - name: Verify Docker is available
+      run: docker info
+
+    # 5. Jalankan semua test (xUnit + Testcontainers)
+    - name: Run xUnit & Testcontainers
+      run: dotnet test dotNet/TokoApi.Tests/TokoApi.Tests.csproj --verbosity normal --no-restore
